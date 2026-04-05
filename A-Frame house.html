@@ -1,0 +1,392 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>温馨小屋（柔和护眼版）</title>
+  <script src="https://aframe.io/releases/1.4.0/aframe.min.js"></script>
+  <样式>
+    主体 { 边距: 0; }
+  </样式>
+</头>
+<身体>
+
+<场景 背景="颜色: #F2E8D7">
+  
+  <a-light type="ambient" color="#E8D7B8" intensity="0.7"></a-light>
+  <a-light type="point" color="#FFD599" intensity="0.7" position="0 3.2 0"></a-light>
+
+  <!-- ====================== 房间结构 ====================== -->
+  <!-- ========== 深浅相间拼接木纹地板（更真实有纹理） ========== -->
+  <!-- 主地板底色 -->
+  <a-plane position="0 0 0" rotation="-90 0 0" width="12" height="12" color="#9D8189" material="roughness:0.8;"></a-plane>
+
+  <!-- ====================== 完整封闭墙体 – 无任何缺口 ====================== -->
+  <!-- 地板（保留你原来的深浅拼接木纹地板） -->
+  <a-plane position="0 0 0" rotation="-90 0 0" width="12" height="12" color="#9D8189" material="roughness:0.8;"></a-plane>
+  <a-box position="0 0.01 -4" width="12" height="0.02" depth="0.3" color="#987666"></a-box>
+  <a-box position="0 0.01 -3.2" width="12" height="0.02" depth="0.3" color="#F5F5F5"></a-box>
+  <a-box position="0 0.01 -2.4" width="12" height="0.02" depth="0.3" color="#987666"></a-box>
+  <a-box position="0 0.01 -1.6" width="12" height="0.02" depth="0.3" color="#F5F5F5"></a-box>
+  <a-box position="0 0.01 -0.8" width="12" height="0.02" depth="0.3" color="#987666"></a-box>
+  <a-box position="0 0.01 0" width="12" height="0.02" depth="0.3" color="#F5F5F5"></a-box>
+  <a-box position="0 0.01 0.8" width="12" height="0.02" depth="0.3" color="#987666"></a-box>
+  <a-box position="0 0.01 1.6" width="12" height="0.02" depth="0.3" color="#F5F5F5"></a-box>
+  <a-box position="0 0.01 2.4" width="12" height="0.02" depth="0.3" color="#987666"></a-box>
+  <a-box position="0 0.01 3.2" width="12" height="0.02" depth="0.3" color="#F5F5F5"></a-box>
+  <a-box position="0 0.01 4" width="12" height="0.02" depth="0.3" color="#987666"></a-box>
+
+  <!-- 后墙（实心，无窗户） -->
+  <a-plane position="0 2 -5" width="10" height="4.5" color="#E67E22" material="roughness:1;"></a-plane>
+  <a-plane position="0 2 -5" width="10" height="4.5" rotation="0 180 0" color="#E67E22" material="roughness:1;"></a-plane>
+
+  <!-- 左侧完整墙面（从内部看无空缺） -->
+  <a-plane position="-5 2 0" rotation="0 90 0" width="10" height="4.5" color="#F39C12"></a-plane>
+  <a-plane position="-5 2 0" rotation="0 -90 0" width="10" height="4.5" color="#F39C12"></a-plane>
+
+  <!-- 右侧完整墙面（从内部看无空缺） -->
+  <a-plane position="5 2 0" rotation="0 -90 0" width="10" height="4.5" color="#F39C12"></a-plane>
+  <a-plane position="5 2 0" rotation="0 90 0" width="10" height="4.5" color="#F39C12"></a-plane>
+
+  <!-- 正面墙（带门） -->
+  <a-plane position="0 2 5" width="10" height="4.5" color="#C18A5B"></a-plane>
+  <a-plane position="0 2 5" width="10" height="4.5" rotation="0 180 0" color="#B95D3D"></a-plane>
+  <a-box position="0 1 5.01" width="1.6" height="2" depth="0.1" color="#F39C12"></a-box>
+
+  <!-- 天花板 -->
+  <a-plane position="0 4 0" rotation="90 0 0" width="12" height="12" color="#FFA07A" material="roughness:1;"></a-plane>
+
+  <!-- 门口镂空 -->
+  <a-box position="0 1 5.01" width="1.6" height="2" depth="0.1" color="#F39C12"></a-box>
+
+  <!-- 左侧墙 · 正对屋内的大钟表 -->
+  <a-entity position="-5 2.2 -1" rotation="0 90 0">
+    <!-- 木质外框 -->
+    <a-torus radius="0.9" radius-tubular="0.13" color="#8B4513"></a-torus>
+    <a-torus radius="0.8" radius-tubular="0.09" color="#D2B48C"></a-torus>
+    <!-- 表盘 -->
+    <a-cylinder radius="0.75" height="0.06" color="#FFF8E7" rotation="90 0 0"></a-cylinder>
+    <!-- 刻度 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="0 0.7 0.04"></a-box>
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="0.7 0 0.04"></a-box>
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="0 -0.7 0.04"></a-box>
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="-0.7 0 0.04"></a-box>
+
+    <!-- 12个均匀指向圆心的钟表刻度 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="0 0.7 0.04" rotation="0 0 0"></a-box>    <!-- 12点 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="0.606 0.35 0.04" rotation="0 0 -30"></a-box> <!-- 1点 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="0.35 0.606 0.04" rotation="0 0 -60"></a-box> <!-- 2点 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="0 0.7 0.04" rotation="0 0 -90"></a-box>    <!-- 3点 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="-0.35 0.606 0.04" rotation="0 0 -120"></a-box><!-- 4点 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="-0.606 0.35 0.04" rotation="0 0 -150"></a-box><!-- 5点 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="-0.7 0 0.04" rotation="0 0 180"></a-box>    <!-- 6点 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="-0.606 -0.35 0.04" rotation="0 0 150"></a-box><!-- 7点 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="-0.35 -0.606 0.04" rotation="0 0 120"></a-box><!-- 8点 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="0 -0.7 0.04" rotation="0 0 90"></a-box>    <!-- 9点 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="0.35 -0.606 0.04" rotation="0 0 60"></a-box> <!-- 10点 -->
+    <a-box width="0.03" height="0.25" depth="0.02" color="#5C3A21" position="0.606 -0.35 0.04" rotation="0 0 30"></a-box> <!-- 11点 -->
+
+    <!-- 中心装饰 -->
+    <a-sphere radius="0.09" color="#8B4513" position="0 0 0.07"></a-sphere>
+    <a-sphere radius="0.06" color="#FFF8E7" position="0 0 0.10"></a-sphere>
+    <!-- 指针 -->
+    <a-box width="0.04" height="0.45" depth="0.03" color="#3D2412" position="0.076 0.22 0.11" rotation="0 0 -20"></a-box>
+    <a-box width="0.03" height="0.6" depth="0.02" color="#2D1A0E" position="-0.17 0.26 0.11" rotation="0 0 30"></a-box>
+  </a-entity>
+
+  <!-- ========== 后墙精致装饰组合（共6样） ========== -->
+
+  <!-- 1. 组合装饰画框 -->
+  <a-box position="-1.8 2.2 -4.98" width="0.8" height="1.0" depth="0.06" color="#F39C12"></a-box>
+  <a-box position="-1.8 2.2 -4.93" width="0.7" height="0.9" depth="0.03" color="#B190D1"></a-box>
+  <a-box position="-1.8 2.2 -4.91" width="0.3" height="0.5" depth="0.01" color="#E49B94"></a-box>
+
+  <!-- 2. 木质壁挂置物架 -->
+  <a-box position="0.2 2.24 -4.98" width="1.2" height="0.1" depth="0.4" color="#D9B48A"></a-box>
+  <a-box position="-0.3 2.2 -4.98" width="0.1" height="0.6" depth="0.08" color="#B8866B"></a-box>
+  <a-box position="0.7 2.2 -4.98" width="0.1" height="0.6" depth="0.08" color="#B8866B"></a-box>
+  <a-cylinder position="0.2 2.35 -4.95" radius="0.08" height="0.12" color="#94724F"></a-cylinder>
+  <a-sphere position="0.2 2.45 -4.95" radius="0.06" color="#7FB76D"></a-sphere>
+
+  <!-- 3. 悬挂式墙面花篮 -->
+  <a-torus position="1.6 2.6 -4.98" radius="0.15" radius-tubular="0.025" color="#D9B48A"></a-torus>
+  <a-cylinder position="1.6 2.4 -4.97" radius="0.1" height="0.2" color="#A67C52"></a-cylinder>
+  <a-sphere position="1.55 2.55 -4.97" radius="0.08" color="#6DA873"></a-sphere>
+  <a-sphere position="1.65 2.52 -4.97" radius="0.07" color="#7FB76D"></a-sphere>
+
+  <!-- 4. 双连装饰牌 -->
+  <a-box position="-2.4 1.2 -4.98" width="0.5" height="0.7" depth="0.05" color="#8BA67A"></a-box>
+  <a-box position="-1.6 1.2 -4.98" width="0.5" height="0.7" depth="0.05" color="#B190D1"></a-box>
+  <a-box position="-2.0 1.6 -4.98" width="0.1" height="0.2" depth="0.04" color="#C97570"></a-box>
+
+  <!-- 5. 墙面艺术挂饰 -->
+  <a-torus position="2.2 1.8 -4.98" radius="0.4" radius-tubular="0.02" color="#D9B48A"></a-torus>
+  <a-box position="2.2 1.8 -4.98" width="0.8" height="0.02" depth="0.02" color="#E9DBC9"></a-box>
+  <a-box position="2.2 1.8 -4.98" width="0.02" height="0.8" depth="0.02" color="#E9DBC9"></a-box>
+  <a-sphere position="2.2 1.55 -4.98" radius="0.05" color="#F7D9C4"></a-sphere>
+
+  <!-- 6. 小型壁挂时钟 -->
+  <a-cylinder position="2.6 2.6 -4.98" radius="0.18" height="0.04" color="#D9B48A"></a-cylinder>
+  <a-cylinder position="2.6 2.6 -4.97" radius="0.14" height="0.03" color="#F5F0E1"></a-cylinder>
+  <a-box position="2.6 2.6 -4.96" width="0.12" height="0.015" depth="0.01" color="#3D3D3D"></a-box>
+  <a-box position="2.6 2.6 -4.96" width="0.015" height="0.08" depth="0.01" color="#3D3D3D"></a-box>
+
+  <!-- ========== 大沙发 · 离桌子很远 · 不重叠 ========== -->
+  <!-- 沙发底座 -->
+  <a-box
+          position="0 0.4 2.5"
+          width="2.8" height="0.5" depth="1.8"
+          color="#D9B48A"
+          material="roughness:0.8; metalness:0;">
+  </a-box>
+
+  <!-- 沙发靠背 -->
+  <a-box
+          position="0 1.1 3.4"
+          width="2.6" height="1.0" depth="0.3"
+          color="#E9DBC9"
+          material="roughness:0.9;">
+  </a-box>
+
+  <!-- 沙发左侧扶手 -->
+  <a-box
+          position="-1.3 0.7 2.5"
+          width="0.3" height="0.6" depth="1.6"
+          color="#E9DBC9">
+  </a-box>
+
+  <!-- 沙发右侧扶手 -->
+  <a-box
+          position="1.3 0.7 2.5"
+          width="0.3" height="0.6" depth="1.6"
+          color="#E9DBC9">
+  </a-box>
+
+  <!-- 沙发左侧靠枕 -->
+  <a-box
+          position="-0.9 1.0 3.2"
+          width="0.4" height="0.3" depth="0.2"
+          color="#F7D9C4"
+          material="roughness:1;">
+  </a-box>
+
+  <!-- 沙发右侧靠枕 -->
+  <a-box
+          position="0.9 1.0 3.2"
+          width="0.4" height="0.3" depth="0.2"
+          color="#F7D9C4">
+  </a-box>
+
+  <!-- 后墙下方 · 长条低矮沙发（不与墙面装饰穿模） -->
+  <a-entity position="0 0.3 -4.7">
+    <!-- 沙发底座（长条主体） -->
+    <a-box width="8" height="0.4" depth="0.8" color="#E9DBC9" material="roughness:0.9;"></a-box>
+
+    <!-- 沙发坐垫（柔软质感） -->
+    <a-box width="7.6" height="0.25" depth="0.7" color="#F7D9C4" position="0 0.2 0" material="roughness:1;"></a-box>
+
+    <!-- 沙发靠背（低矮不挡装饰） -->
+    <a-box width="7.8" height="0.6" depth="0.15" color="#D9B48A" position="0 0.4 -0.35" material="roughness:0.8;"></a-box>
+
+    <!-- 均匀装饰抱枕（6个，不穿模） -->
+    <a-box width="0.6" height="0.4" depth="0.2" color="#F39C12" position="-2.8 0.55 -0.25"></a-box>
+    <a-box width="0.6" height="0.4" depth="0.2" color="#E67E22" position="-1.4 0.55 -0.25"></a-box>
+    <a-box width="0.6" height="0.4" depth="0.2" color="#F7D9C4" position="0 0.55 -0.25"></a-box>
+    <a-box width="0.6" height="0.4" depth="0.2" color="#E67E22" position="1.4 0.55 -0.25"></a-box>
+    <a-box width="0.6" height="0.4" depth="0.2" color="#F39C12" position="2.8 0.55 -0.25"></a-box>
+  </a-entity>
+
+  <!-- ====================== 桌子 + 凳子 ====================== -->
+  <a-box position="0 0.7 -2" width="3.2" height="0.5" depth="2.2" color="#F8C3D0"></a-box>
+  <a-box position="-1.3 0.25 -1.05" width="0.2" height="1" depth="0.2" color="#FF7F50"></a-box>
+  <a-box position="1.3 0.25 -1.05" width="0.2" height="1" depth="0.2" color="#FF7F50"></a-box>
+  <a-box position="-1.3 0.25 -2.9" width="0.2" height="1" depth="0.2" color="#FF7F50"></a-box>
+  <a-box position="1.3 0.25 -2.9" width="0.2" height="1" depth="0.2" color="#FF7F50"></a-box>
+
+  <!-- 凳子 -->
+  <a-box position="-1.6 0.35 -1.5" width="0.5" height="0.3" depth="0.5" color="#D4B27F"></a-box>
+  <a-box position="-1.6 0.1 -1.5" width="0.15" height="0.6" depth="0.15" color="#C9A67C"></a-box>
+  <a-box position="1.6 0.35 -1.5" width="0.5" height="0.3" depth="0.5" color="#D4B27F"></a-box>
+  <a-box position="1.6 0.1 -1.5" width="0.15" height="0.6" depth="0.15" color="#C9A67C"></a-box>
+
+  <!-- ====================== 桌上物品 ====================== -->
+  <!-- 手机主体 -->
+  <a-box position="0.2 1.02 -2.2" rotation="0 0 90" width="0.08" height="0.15" depth="0.02" color="#87CEEB"></a-box>
+  <!-- 手机屏幕 -->
+  <a-plane position="0.2 1.02 -2.189" rotation="0 0 90" width="0.07" height="0.13" color="#000000" opacity="0.8"></a-plane>
+
+  <!-- ========== 桌上新增：一杯咖啡 + 笔记本电脑 ========== -->
+
+  <!-- 咖啡杯（带杯身+杯柄+咖啡液体，超精致） -->
+  <a-cylinder position="0.5 1.02 -1.9" radius="0.08" height="0.17" color="#F5F5F5"></a-cylinder>
+  <a-torus position="0.6 1.02 -1.9" radius="0.05" radius-tubular="0.005" color="#F5F5F5" rotation="0 0 90"></a-torus>
+  <a-cylinder position="0.5 1.05 -1.9" radius="0.06" height="0.02" color="#6F4E37"></a-cylinder>
+
+  <!-- 一本书（暖色调，精致不突兀） -->
+  <a-box position="-0.2 1.03 -2.0" width="0.2" height="0.03" depth="0.275" color="#8A5D3F"></a-box>
+  <a-box position="-0.2 1.041 -2.0" width="0.19" height="0.01" depth="0.26" color="#A47656"></a-box>
+
+  <!-- ====================== 植物 ====================== -->
+  <a-cylinder position="-4.2 0.4 -3.8" radius="0.18" height="0.3" color="#94724F"></a-cylinder>
+  <a-sphere position="-4.2 0.8 -3.8" radius="0.25" color="#7FB76D"></a-sphere>
+  <a-sphere position="-4.35 0.75 -3.8" radius="0.18" color="#6DA873"></a-sphere>
+  <a-sphere position="-4.05 0.75 -3.8" radius="0.18" color="#6DA873"></a-sphere>
+
+  <a-cylinder position="4.2 0.4 -3.8" radius="0.18" height="0.3" color="#94724F"></a-cylinder>
+  <a-sphere position="4.2 0.8 -3.8" radius="0.25" color="#7FB76D"></a-sphere>
+  <a-sphere position="4.35 0.75 -3.8" radius="0.18" color="#6DA873"></a-sphere>
+  <a-sphere position="4.05 0.75 -3.8" radius="0.18" color="#6DA873"></a-sphere>
+
+  <!-- ========== 带木质底座台子的左右绿植（不悬空版） ========== -->
+  <!-- 左侧植物 + 木质台子 -->
+  <a-box position="-4.2 0.15 -3.8" width="0.4" height="0.3" depth="0.4" color="#C9A67C"></a-box>
+  <a-cylinder position="-4.2 0.4 -3.8" radius="0.18" height="0.3" color="#94724F"></a-cylinder>
+  <a-sphere position="-4.2 0.8 -3.8" radius="0.25" color="#7FB76D"></a-sphere>
+  <a-sphere position="-4.35 0.75 -3.8" radius="0.18" color="#6DA873"></a-sphere>
+  <a-sphere position="-4.05 0.75 -3.8" radius="0.18" color="#6DA873"></a-sphere>
+
+  <!-- 右侧植物 + 木质台子 -->
+  <a-box position="4.2 0.15 -3.8" width="0.4" height="0.3" depth="0.4" color="#C9A67C"></a-box>
+  <a-cylinder position="4.2 0.4 -3.8" radius="0.18" height="0.3" color="#94724F"></a-cylinder>
+  <a-sphere position="4.2 0.8 -3.8" radius="0.25" color="#7FB76D"></a-sphere>
+  <a-sphere position="4.35 0.75 -3.8" radius="0.18" color="#6DA873"></a-sphere>
+  <a-sphere position="4.05 0.75 -3.8" radius="0.18" color="#6DA873"></a-sphere>
+
+  <!-- ========== 超多温馨小植物（直接粘贴） ========== -->
+
+  <!-- 墙角大绿植 1 -->
+  <a-cylinder position="-4.5 0.175 -2.5" radius="0.2" height="0.35" color="#94724F"></a-cylinder>
+  <a-sphere position="-4.5 0.725 -2.5" radius="0.32" color="#7FB76D"></a-sphere>
+  <a-sphere position="-4.7 0.625 -2.5" radius="0.22" color="#6DA873"></a-sphere>
+  <a-sphere position="-4.3 0.625 -2.5" radius="0.22" color="#6DA873"></a-sphere>
+  <a-sphere position="-4.5 0.525 -2.7" radius="0.22" color="#6DA873"></a-sphere>
+
+  <!-- 墙角大绿植 2 -->
+  <a-cylinder position="4.5 0.175 -2.5" radius="0.2" height="0.35" color="#94724F"></a-cylinder>
+  <a-sphere position="4.5 0.725 -2.5" radius="0.32" color="#7FB76D"></a-sphere>
+  <a-sphere position="4.7 0.625 -2.5" radius="0.22" color="#6DA873"></a-sphere>
+  <a-sphere position="4.3 0.625 -2.5" radius="0.22" color="#6DA873"></a-sphere>
+  <a-sphere position="4.5 0.525 -2.7" radius="0.22" color="#6DA873"></a-sphere>
+
+  <!-- 桌子上迷你小绿植（超可爱） -->
+  <a-cylinder position="0.6 1.0 -2.3" radius="0.04" height="0.08" color="#94724F"></a-cylinder>
+  <a-sphere position="0.6 1.08 -2.3" radius="0.05" color="#7FB76D"></a-sphere>
+
+  <!-- 四根墙角立柱 -->
+  <a-box position="-4.9 2 -4.9" width="0.2" height="4" depth="0.2" color="#E67E22"></a-box>
+  <a-box position="4.9 2 -4.9" width="0.2" height="4" depth="0.2" color="#E67E22"></a-box>
+  <a-box position="-4.9 2 4.9" width="0.2" height="4" depth="0.2" color="#E67E22"></a-box>
+  <a-box position="4.9 2 4.9" width="0.2" height="4" depth="0.2" color="#E67E22"></a-box>
+
+  <!-- ====================== 精致吊灯 · 超细致版 ====================== -->
+  <!-- 顶部吊杆 -->
+  <a-cylinder position="0 3.8 0" radius="0.04" height="0.4" color="#A67C52"></a-cylinder>
+
+  <!-- 吊灯装饰盖 -->
+  <a-torus position="0 3.65 0" radius="0.15" radius-tubular="0.03" color="#D9B48A" rotation="0 0 0"></a-torus>
+
+  <!-- 吊灯主体框架 -->
+  <a-torus position="0 3.5 0" radius="0.4" radius-tubular="0.04" color="#E9DBC9" rotation="0 0 0"></a-torus>
+  <a-torus position="0 3.4 0" radius="0.32" radius-tubular="0.03" color="#D9B48A" rotation="0 0 0"></a-torus>
+
+  <!-- 吊灯光源（柔和暖光，不刺眼） -->
+  <a-light type="point" color="#FFD599" intensity="0.2" position="0 3.5 0"></a-light>
+  <a-sphere position="0 3.5 0" radius="0.08" color="#FFE4B5"></a-sphere>
+
+  <!-- 多层垂坠装饰 -->
+  <a-torus position="0 3.35 0" radius="0.22" radius-tubular="0.02" color="#F7D9C4"></a-torus>
+  <a-box position="0.22 3.3 0" width="0.02" height="0.15" depth="0.02" color="#D9B48A"></a-box>
+  <a-box position="-0.22 3.3 0" width="0.02" height="0.15" depth="0.02" color="#D9B48A"></a-box>
+  <a-box position="0 3.3 0.22" width="0.02" height="0.15" depth="0.02" color="#D9B48A"></a-box>
+  <a-box position="0 3.3 -0.22" width="0.02" height="0.15" depth="0.02" color="#D9B48A"></a-box>
+
+  <!-- 底部装饰 -->
+  <a-sphere position="0 3.22 0" radius="0.05" color="#E9DBC9"></a-sphere>
+
+  <!-- 后墙顶部 · 精致装饰组（8件，温馨治愈风） -->
+  <a-entity position="0 3.2 -4.9">
+
+    <!-- 1. 左侧木质小搁板 + 小盆栽 -->
+    <a-box position="-3.2 0 0" width="0.6" height="0.15" depth="0.3" color="#B8866B"></a-box>
+    <a-cylinder position="-3.2 0.15 0" radius="0.08" height="0.18" color="#8F6B4F"></a-cylinder>
+    <a-sphere position="-3.2 0.32 0" radius="0.12" color="#7FB76D"></a-sphere>
+
+    <!-- 2. 云朵挂饰（软萌） -->
+    <a-sphere position="-1.8 0.2 0" radius="0.15" color="#F0F8FF" scale="1.2 0.7 0.5"></a-sphere>
+    <a-sphere position="-2.0 0.1 0" radius="0.1" color="#F0F8FF"></a-sphere>
+    <a-sphere position="-1.6 0.1 0" radius="0.1" color="#F0F8FF"></a-sphere>
+
+    <!-- 3. 月亮小夜灯 -->
+    <a-torus position="0 0.1 0" radius="0.2" radius-tubular="0.04" color="#FFEFA8"></a-torus>
+    <a-light type="point" color="#FFF9C4" intensity="0.1" position="0 0.1 0"></a-light>
+
+<!-- 4. 爱心壁挂装饰 -->
+    <a-sphere position="1.0 0.15 0" radius="0.11" color="#F7A4B0" scale="1 1 0.4"></a-sphere>
+    <a-box position="1.0 -0.05 0" width="0.05" height="0.18" depth="0.05" color="#D9B48A"></a-box>
+
+      <!-- 5. 星星串饰 -->
+      <a-tetrahedron position="2.0 0.2 0" color="#FFE666" scale="0.18 0.18 0.18" rotation="0 45 0"></a-tetrahedron>
+      <a-tetrahedron position="2.2 0.0 0" color="#FFE666" scale="0.14 0.14 0.14" rotation="0 30 0"></a-tetrahedron>
+      <a-tetrahedron position="1.8 0.05 0" color="#FFE666" scale="0.16 0.16 0.16" rotation="0 20 0"></a-tetrahedron>
+
+      <!-- 6. 复古小相框 -->
+      <a-box position="3.0 0.05 0" width="0.35" height="0.4" depth="0.04" color="#8B4513"></a-box>
+      <a-box position="3.0 0.05 0" width="0.27" height="0.32" depth="0.03" color="#F7E8D6"></a-box>
+
+      <!-- 7. 悬挂小花束 -->
+      <a-cylinder position="-0.8 -0.1 0" radius="0.03" height="0.3" color="#D9B48A" rotation="10 0 0"></a-cylinder>
+      <a-sphere position="-0.7 0.15 0" radius="0.07" color="#FFB3C1"></a-sphere>
+      <a-sphere position="-0.85 0.05 0" radius="0.07" color="#FFB3C1"></a-sphere>
+      <a-sphere position="-0.8 0.2 0" radius="0.06" color="#7FB76D"></a-sphere>
+
+      <!-- 8. 弧形木质挂饰 -->
+      <a-torus position="3.8 0 0" radius="0.25" radius-tubular="0.03" color="#D2B48C"></a-torus>
+    </a-entity>
+
+  <!-- 沙发旁 · 精致治愈玩偶（高度匹配沙发） -->
+  <a-entity position="-1.2 0.85 -4.5" rotation="0 30 0">
+    <!-- 身体主体 -->
+    <a-capsule radius="0.25" height="0.8" color="#F0C8C8" position="0 0.5 0" rotation="0 0 0"></a-capsule>
+
+    <!-- 头部 -->
+    <a-sphere radius="0.32" color="#F0C8C8" position="0 1.15 0"></a-sphere>
+
+    <!-- 耳朵（一对软萌立体） -->
+    <a-sphere radius="0.12" color="#F0C8C8" position="-0.22 1.35 0" scale="0.8 1 1"></a-sphere>
+    <a-sphere radius="0.12" color="#F0C8C8" position="0.22 1.35 0" scale="0.8 1 1"></a-sphere>
+    <a-sphere radius="0.07" color="#F8B0B0" position="-0.22 1.35 0.05"></a-sphere>
+    <a-sphere radius="0.07" color="#F8B0B0" position="0.22 1.35 0.05"></a-sphere>
+
+    <!-- 眼睛（温柔圆眼，不突兀） -->
+    <a-sphere radius="0.045" color="#3A3A3A" position="-0.12 1.18 0.28"></a-sphere>
+    <a-sphere radius="0.045" color="#3A3A3A" position="0.12 1.18 0.28"></a-sphere>
+    <a-sphere radius="0.018" color="#FFFFFF" position="-0.13 1.21 0.31"></a-sphere>
+    <a-sphere radius="0.018" color="#FFFFFF" position="0.11 1.21 0.31"></a-sphere>
+
+    <!-- 腮红（温柔治愈） -->
+    <a-sphere radius="0.06" color="#F8B1B1" position="-0.26 1.08 0.25" scale="1 0.8 0.5"></a-sphere>
+    <a-sphere radius="0.06" color="#F8B1B1" position="0.26 1.08 0.25" scale="1 0.8 0.5"></a-sphere>
+
+    <!-- 微笑嘴巴 -->
+    a-torus radius="0.06" radius-tubular="0.015" color="#D88A8A" position="0 0.98 0.31" rotation="180 0 0"></a-torus>
+
+    <!-- 小领结（精致加分） -->
+    <a-box width="0.12" height="0.08" depth="0.04" color="#FFB3C1" position="0 1.35 0.22"></a-box>
+    <a-sphere radius="0.04" color="#FFB3C1" position="-0.06 1.35 0.22"></a-sphere>
+    <a-sphere radius="0.04" color="#FFB3C1" position="0.06 1.35 0.22"></a-sphere>
+
+    <!-- 手臂（一对） -->
+    <a-capsule radius="0.07" height="0.45" color="#F0C8C8" position="-0.35 0.65 0" rotation="0 0 50"></a-capsule>
+    <a-capsule radius="0.07" height="0.45" color="#F0C8C8" position="0.35 0.65 0" rotation="0 0 -50"></a-capsule>
+
+    <!-- 腿部（一对） -->
+    <a-capsule radius="0.09" height="0.4" color="#F0C8C8" position="-0.18 0.1 0"></a-capsule>
+    <a-capsule radius="0.09" height="0.4" color="#F0C8C8" position="0.18 0.1 0"></a-capsule>
+  </a-entity>
+
+  <!-- ====================== 相机 ====================== -->
+  <a-camera position="0 1.7 3.4" rotation="-12 0 0"></a-camera>
+</a-scene>
+
+</body>
+</html>
